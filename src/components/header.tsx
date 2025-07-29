@@ -4,8 +4,10 @@ import { MenuLink } from "./menu-link";
 
 export function Header() {
   return (
-    <header className="flex justify-between items-center text-white p-4 m-4 w-full">
-      <Logo />
+    <header className="flex justify-between items-center text-white mt-8 w-full">
+      <MenuLink href="/">
+        <Logo />
+      </MenuLink>
 
       <menu className="flex space-x-4 items-center">
         <MenuLink href="/characters">Characters</MenuLink>
