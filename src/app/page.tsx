@@ -28,26 +28,6 @@ export default function Home() {
     console.log("People:", peoples);
   }, []);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await api.get("people");
-  //       if (!response || !response.data) {
-  //         console.error("No data in API response.");
-  //         return;
-  //       }
-  //       console.log("Full Response:", response);
-  //       setPeople(response.data.results);
-  //       setLoading(false);
-
-  //       console.log("Full Response:", response);
-  //     } catch (error) {
-  //       console.error("Error in:", error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, [people]);
-
   return (
     <div className="font-sans flex flex-col h-screen mx-8">
       <Header />
