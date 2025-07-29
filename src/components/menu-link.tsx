@@ -4,7 +4,7 @@ import Link from "next/link";
 type MenuProps = {
   className?: string;
   href: string;
-  target?: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
   icon?: React.ReactNode;
   children: React.ReactNode;
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>;
@@ -18,25 +18,23 @@ export function MenuLink({
   ...rest
 }: MenuProps) {
   return (
-    <menu>
-      <nav>
-        <ul className="flex space-x-4">
-          <li>
-            <Link
-              href={href}
-              className={cn(
-                "text-white hover:text-[#FFE81F] hover:underline transition-all",
-                className
-              )}
-              target={target}
-              {...rest}
-            >
-              {icon}
-              {children}
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </menu>
+    <nav>
+      <ul>
+        <li>
+          <Link
+            href={href}
+            className={cn(
+              "text-white hover:text-[#FFE81F] hover:underline transition-all",
+              className
+            )}
+            target={target}
+            {...rest}
+          >
+            {icon}
+            {children}
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 }
