@@ -16,7 +16,7 @@ type PeopleProps = {
 };
 
 export default function Home() {
-  const [peoples, setPeoples] = useState<PeopleProps[]>([]); // Inicializando com um array vazio
+  const [peoples, setPeoples] = useState<PeopleProps[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
