@@ -1,4 +1,4 @@
-export function footer() {
+export function Footer() {
   return (
     <footer className="mb-8 flex flex-1 justify-center items-end">
       <div className="flex justify-center">
