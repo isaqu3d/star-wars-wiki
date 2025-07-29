@@ -1,6 +1,5 @@
-import { GithubIcon } from "lucide-react";
-import Link from "next/link";
 import { Logo } from "./logo";
+import { MenuLink } from "./menu-link";
 
 export function Header() {
   return (
@@ -8,38 +7,7 @@ export function Header() {
       <Logo />
 
       <menu>
-        <nav>
-          <ul className="flex space-x-4">
-            <li>
-              <Link
-                href="/characters"
-                className="text-white hover:text-[#FFE81F] hover:underline transition-all"
-              >
-                Characters
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                href="/planets"
-                className="hover:text-[#FFE81F] hover:underline transition-all"
-              >
-                Planets
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                href="/planets"
-                target="_blank"
-                className="flex items-center gap-2 hover:text-[#FFE81F] hover:underline transition-all"
-              >
-                GitHub
-                <GithubIcon />
-              </Link>
-            </li>
-          </ul>
-        </nav>
+        <MenuLink href="/characters">Characters</MenuLink>
       </menu>
     </header>
   );
