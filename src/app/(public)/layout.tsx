@@ -3,7 +3,7 @@ import "../globals.css";
 
 export default function Layout() {
   return (
-    <div>
+    <div className="font-sans flex ">
       <Header />
     </div>
   );
