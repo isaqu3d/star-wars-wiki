@@ -15,7 +15,7 @@ export function Input({
   return (
     <div
       className={cn(
-        "flex items-center border border-gray-300 rounded-lg w-full max-w-md px-3 py-2 gap-2 focus-within:ring-2 focus-within:ring-blue-500",
+        "flex items-center border border-[#FFE81F] rounded-lg w-full max-w-md px-3 py-2 gap-2 focus-within:ring-2 focus-within:ring-[#FFE81F] mt-8",
         className
       )}
     >
