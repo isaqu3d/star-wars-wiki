@@ -1,6 +1,7 @@
 "use client";
 
 import { CardPlanetsProps } from "@/@types/types";
+import { CardPlanets } from "@/components/card-planets";
 import { Input } from "@/components/input";
 import { Loading } from "@/components/loading";
 import api from "@/services/api";
@@ -49,6 +50,14 @@ export default function PlanetsPage() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+
+        {filteredPeoples.length > 0 ? (
+          filteredPeoples.map((planet: CardPlanetsProps) => (
+            <CardPlanets key={planet.name} {...planet} />
+          ))
+        ) : (
+          <p className="text-gray-500 mt-4">No planets found.</p>
+        )}
       </div>
     </div>
   );
