@@ -2,8 +2,10 @@
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { Input } from "@/components/input";
 import { Loading } from "@/components/loading";
 import api from "@/services/api";
+import { SearchIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type PeopleProps = {
@@ -18,15 +20,18 @@ type PeopleProps = {
 export default function Home() {
   const [peoples, setPeoples] = useState<PeopleProps[]>([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     api.get("people").then(({ data }) => {
       setPeoples(data);
       setLoading(false);
     });
-
-    console.log("People:", peoples);
   }, []);
+
+  const filteredPeoples = peoples.filter((person) =>
+    person.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div className="font-sans flex flex-col h-screen mx-8">
@@ -41,11 +46,23 @@ export default function Home() {
           This is a wiki about all things Star Wars.
         </p>
 
+        <Input
+          icon={<SearchIcon />}
+          iconPosition="right"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
         <div className="border border-gray-300 rounded-lg p-4 mt-8 w-full max-w-md">
           {loading ? (
             <Loading />
+          ) : filteredPeoples.length > 0 ? (
+            filteredPeoples.map((people) => (
+              <li key={people.name} className="text-white">
+                {people.name}
+              </li>
+            ))
           ) : (
-            peoples?.map((people) => <li key={people.name}>{people.name}</li>)
+            <p className="text-gray-500">No characters found.</p>
           )}
         </div>
       </div>
