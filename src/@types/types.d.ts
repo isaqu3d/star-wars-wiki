@@ -9,3 +9,13 @@ export type CardCharactersProps = {
   skin_color: string;
   homeworld: string;
 };
+
+export type CardPlanetsProps = {
+  gravity: string;
+  name: string;
+  orbital_period: string;
+  population: string;
+  rotation_period: string;
+  surface_water: string;
+  terrain: string;
+};
