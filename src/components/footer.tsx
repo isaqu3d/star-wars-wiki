@@ -1,6 +1,10 @@
-export function Footer() {
+import { cn } from "@/utils/cn";
+
+export function Footer({ className }: { className?: string }) {
   return (
-    <footer className="mb-8 flex flex-1 justify-center items-end">
+    <footer
+      className={cn("flex flex-1 justify-center items-end py-8", className)}
+    >
       <div className="flex justify-center">
         <p className="text-sm text-gray-500">
           &copy; {new Date().getFullYear()} Star Wars Wiki
