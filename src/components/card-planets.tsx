@@ -10,7 +10,7 @@ export function CardPlanets({
   terrain,
 }: CardPlanetsProps) {
   return (
-    <section className="bg-[#FFE81F] p-4 rounded-lg shadow-md w-full  hover:scale-110 transition-transform duration-300 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 max-w-4xl">
+    <section className="bg-[#FFE81F] p-4 rounded-lg shadow-md w-full hover:scale-105 transition-transform duration-300 cursor-pointer">
       <h2 className="text-xl font-semibold text-black">{name}</h2>
       <ul className="text-black mt-2">
         <li>

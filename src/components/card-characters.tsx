@@ -1,4 +1,4 @@
-import { CardCharactersProps } from "@/@types/characters";
+import { CardCharactersProps } from "@/@types/types";
 
 export function CardCharacters({
   name,
@@ -12,7 +12,7 @@ export function CardCharacters({
   homeworld,
 }: CardCharactersProps) {
   return (
-    <section className="bg-[#FFE81F] p-4 rounded-lg shadow-md w-full gap-12 hover:scale-110 transition-transform duration-300">
+    <section className="bg-[#FFE81F] p-4 rounded-lg shadow-md w-full hover:scale-105 transition-transform duration-300 cursor-pointer">
       <h2 className="text-xl font-semibold text-black">{name}</h2>
       <ul className="text-black mt-2">
         <li>
