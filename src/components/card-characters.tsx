@@ -1,14 +1,4 @@
-type CardCharactersProps = {
-  name: string;
-  birth_year: string;
-  height: string;
-  gender: string;
-  mass: string;
-  eye_color: string;
-  hair_color: string;
-  skin_color: string;
-  homeworld: string;
-};
+import { CardCharactersProps } from "@/@types/characters";
 
 export function CardCharacters({
   name,
@@ -22,14 +12,14 @@ export function CardCharacters({
   homeworld,
 }: CardCharactersProps) {
   return (
-    <div className="bg-[#FFE81F] p-4 rounded-lg shadow-md">
+    <section className="bg-[#FFE81F] p-4 rounded-lg shadow-md w-96 flex gap-12">
       <h2 className="text-xl font-semibold text-black">{name}</h2>
       <ul className="text-black mt-2">
         <li>
           <strong>Birth Year:</strong> {birth_year}
         </li>
         <li>
-          <strong>Height:</strong> {height} cm
+          <strong>Height:</strong> {height}
         </li>
         <li>
           <strong>Gender:</strong> {gender}
@@ -50,6 +40,6 @@ export function CardCharacters({
           <strong>Homeworld:</strong> {homeworld}
         </li>
       </ul>
-    </div>
+    </section>
   );
 }
