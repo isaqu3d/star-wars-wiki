@@ -1,5 +1,7 @@
 "use client";
 
+import { CardCharactersProps } from "@/@types/characters";
+import { CardCharacters } from "@/components/card-characters";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Input } from "@/components/input";
@@ -18,7 +20,7 @@ type PeopleProps = {
 };
 
 export default function Home() {
-  const [peoples, setPeoples] = useState<PeopleProps[]>([]);
+  const [peoples, setPeoples] = useState<CardCharactersProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
@@ -26,6 +28,8 @@ export default function Home() {
     api.get("people").then(({ data }) => {
       setPeoples(data);
       setLoading(false);
+
+      console.log("People data fetched:", data);
     });
   }, []);
 
@@ -52,14 +56,24 @@ export default function Home() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <div className="border border-gray-300 rounded-lg p-4 mt-8 w-full max-w-md">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 max-w-4xl ">
           {loading ? (
             <Loading />
           ) : filteredPeoples.length > 0 ? (
-            filteredPeoples.map((people) => (
-              <li key={people.name} className="text-white">
-                {people.name}
-              </li>
+            filteredPeoples.map((people: CardCharactersProps) => (
+              <CardCharacters
+                key={people.name}
+                name={people.name}
+                mass={people.mass}
+                birth_year={people.birth_year}
+                eye_color={people.eye_color}
+                gender={people.gender}
+                height={people.height}
+                hair_color={people.hair_color}
+                skin_color={people.skin_color}
+                homeworld={people.homeworld} // Se tiver esse dado no seu API
+              />
             ))
           ) : (
             <p className="text-gray-500">No characters found.</p>
