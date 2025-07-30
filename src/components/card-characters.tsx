@@ -12,14 +12,14 @@ export function CardCharacters({
   homeworld,
 }: CardCharactersProps) {
   return (
-    <section className="bg-[#FFE81F] p-4 rounded-lg shadow-md w-96 flex gap-12">
+    <section className="bg-[#FFE81F] p-4 rounded-lg shadow-md w-full gap-12 hover:scale-110 transition-transform duration-300">
       <h2 className="text-xl font-semibold text-black">{name}</h2>
       <ul className="text-black mt-2">
         <li>
           <strong>Birth Year:</strong> {birth_year}
         </li>
         <li>
-          <strong>Height:</strong> {height}
+          <strong>Height:</strong> {height}m
         </li>
         <li>
           <strong>Gender:</strong> {gender}
