@@ -34,7 +34,7 @@ export default function PlanetsPage() {
     );
   }
   return (
-    <div className="font-sans flex flex-col h-screen mx-8">
+    <div className="font-sans flex flex-col mx-8">
       <div className="flex flex-col items-center mt-8">
         <h1 className="text-2xl font-bold mt-8 text-[#FFE81F]">
           Welcome to the Star Wars Wiki
@@ -51,13 +51,15 @@ export default function PlanetsPage() {
           onChange={(e) => setSearch(e.target.value)}
         />
 
-        {filteredPeoples.length > 0 ? (
-          filteredPeoples.map((planet: CardPlanetsProps) => (
-            <CardPlanets key={planet.name} {...planet} />
-          ))
-        ) : (
-          <p className="text-gray-500 mt-4">No planets found.</p>
-        )}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-8">
+          {filteredPeoples.length > 0 ? (
+            filteredPeoples.map((planet: CardPlanetsProps) => (
+              <CardPlanets key={planet.name} {...planet} />
+            ))
+          ) : (
+            <p className="text-gray-500 mt-4">No planets found.</p>
+          )}
+        </div>
       </div>
     </div>
   );

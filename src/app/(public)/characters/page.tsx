@@ -1,8 +1,7 @@
 "use client";
 
-import { CardCharactersProps } from "@/@types/characters";
+import { CardCharactersProps } from "@/@types/types";
 import { CardCharacters } from "@/components/card-characters";
-import { Footer } from "@/components/footer";
 import { Input } from "@/components/input";
 import { Loading } from "@/components/loading";
 import api from "@/services/api";
@@ -26,8 +25,16 @@ export default function CharactersPage() {
   const filteredPeoples = peoples.filter((person) =>
     person.name.toLowerCase().includes(search.toLowerCase())
   );
+
+  if (loading) {
+    return (
+      <div className="w-full items-center flex justify-center text-center mx-auto flex-1">
+        <Loading />
+      </div>
+    );
+  }
   return (
-    <div className="font-sans flex flex-col h-screen mx-8">
+    <div className="font-sans flex flex-col mx-8">
       <div className="flex flex-col items-center mt-8">
         <h1 className="text-2xl font-bold mt-8 text-[#FFE81F]">
           Welcome to the Star Wars Wiki
@@ -44,12 +51,8 @@ export default function CharactersPage() {
           onChange={(e) => setSearch(e.target.value)}
         />
 
-        <div>
-          {loading ? (
-            <div className="w-full items-center flex justify-center text-center mx-auto flex-1">
-              <Loading />
-            </div>
-          ) : filteredPeoples.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-8">
+          {filteredPeoples.length > 0 ? (
             filteredPeoples.map((people: CardCharactersProps) => (
               <CardCharacters
                 key={people.name}
@@ -61,7 +64,7 @@ export default function CharactersPage() {
                 height={people.height}
                 hair_color={people.hair_color}
                 skin_color={people.skin_color}
-                homeworld={people.homeworld} // Se tiver esse dado no seu API
+                homeworld={people.homeworld}
               />
             ))
           ) : (
@@ -69,8 +72,6 @@ export default function CharactersPage() {
           )}
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }
