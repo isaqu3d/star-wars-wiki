@@ -1,5 +1,6 @@
-import { cn } from "@/utils/cn";
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type MenuProps = {
   className?: string;
@@ -17,16 +18,19 @@ export function MenuLink({
   children,
   ...rest
 }: MenuProps) {
+  const router = usePathname();
+  const active = router === href;
+
   return (
     <nav>
       <ul>
         <li>
           <Link
             href={href}
-            className={cn(
-              "text-white hover:text-[#FFE81F] hover:underline transition-all",
-              className
-            )}
+            className={`${
+              active ? "text-[#FFE81F]" : "text-red"
+            } flex items-center gap-2 hover:underline transition-all
+              `}
             target={target}
             {...rest}
           >
