@@ -6,12 +6,15 @@ import { Input } from "@/components/input";
 import { Loading } from "@/components/loading";
 import api from "@/services/api";
 import { SearchIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function CharactersPage() {
   const [peoples, setPeoples] = useState<CardCharactersProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+
+  const router = useRouter();
 
   useEffect(() => {
     api.get("people").then(({ data }) => {
@@ -53,20 +56,26 @@ export default function CharactersPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-8">
           {filteredPeoples.length > 0 ? (
-            filteredPeoples.map((people: CardCharactersProps) => (
-              <CardCharacters
-                key={people.name}
-                name={people.name}
-                mass={people.mass}
-                birth_year={people.birth_year}
-                eye_color={people.eye_color}
-                gender={people.gender}
-                height={people.height}
-                hair_color={people.hair_color}
-                skin_color={people.skin_color}
-                homeworld={people.homeworld}
-              />
-            ))
+            filteredPeoples.map(
+              (people: CardCharactersProps, index: number) => (
+                <div
+                  onClick={() => router.push(`/characters/${index + 1}`)}
+                  key={people.name}
+                >
+                  <CardCharacters
+                    name={people.name}
+                    mass={people.mass}
+                    birth_year={people.birth_year}
+                    eye_color={people.eye_color}
+                    gender={people.gender}
+                    height={people.height}
+                    hair_color={people.hair_color}
+                    skin_color={people.skin_color}
+                    homeworld={people.homeworld}
+                  />
+                </div>
+              )
+            )
           ) : (
             <p className="text-gray-500">No characters found.</p>
           )}
